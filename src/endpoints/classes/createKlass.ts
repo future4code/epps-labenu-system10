@@ -12,6 +12,7 @@ const createKlass = async (req: Request, res: Response): Promise<void> => {
       end_date: req.body.end_date,
       module: req.body.module,
     };
+
     await insertKlass(klass);
 
     res.status(201).send({ message: 'OK', klass });
@@ -31,6 +32,7 @@ const insertKlass = async (data: Klass): Promise<Klass> => {
       module: data.module,
     })
     .into('Class');
+
   return result[0];
 };
 
