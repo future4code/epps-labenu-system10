@@ -4,8 +4,10 @@ import Student from '../../types/student';
 
 const createStudent = async (req: Request, res: Response): Promise<void> => {
   try {
-    const student = {
-      id: req.body.id,
+    const studentId = req.body.id;
+
+    const student: Student = {
+      id: studentId,
       name: req.body.name,
       email: req.body.email,
       birth_date: req.body.birth_date,
@@ -13,9 +15,9 @@ const createStudent = async (req: Request, res: Response): Promise<void> => {
 
     await insertStudent(student);
 
-    res.status(201).send({ student });
+    res.status(201).send({ message: 'OK', student });
   } catch (err) {
-    // res.status(400).send({ message: err.message });
+    res.status(400).send({ message: err.message });
     throw new Error(err.message);
   }
 };
@@ -28,6 +30,7 @@ const insertStudent = async (data: Student): Promise<Student> => {
       birth_date: data.birth_date,
     })
     .into('Student');
+  console.log('id', result[0]);
   return result[0];
 };
 

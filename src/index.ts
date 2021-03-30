@@ -3,7 +3,7 @@ import express, { Express } from 'express';
 import cors from 'cors';
 import { AddressInfo } from 'net';
 
-import createClass from './endpoints/classes/createClass';
+import createKlass from './endpoints/classes/createKlass';
 import createStudent from './endpoints/students/createStudent';
 
 const app: Express = express();
@@ -12,7 +12,7 @@ app.use(express.json());
 app.use(cors());
 
 // Endpoint routes
-app.post('/classes', createClass);
+app.post('/classes', createKlass);
 app.post('/students', createStudent);
 
 const server = app.listen(process.env.PORT || 3003, () => {
