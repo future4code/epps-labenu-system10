@@ -4,31 +4,30 @@ import Student from '../../types/student';
 
 const createStudent = async (req: Request, res: Response): Promise<void> => {
   try {
-    const student = {
+    const student: Student = await insertStudent({
       id: req.body.id,
       name: req.body.name,
       email: req.body.email,
       birth_date: req.body.birth_date,
-    };
+    });
 
-    await insertStudent(student);
-
-    res.status(201).send({ student });
+    res.status(201).send({ message: 'OK', student });
   } catch (err) {
-    // res.status(400).send({ message: err.message });
+    res.status(400).send({ message: err.message });
     throw new Error(err.message);
   }
 };
 
 const insertStudent = async (data: Student): Promise<Student> => {
-  const result: Student[] = await connection
+  const result: Student = await connection
     .insert({
       name: data.name,
       email: data.email,
       birth_date: data.birth_date,
     })
     .into('Student');
-  return result[0];
+  console.log(result, 'aaa');
+  return result;
 };
 
 export default createStudent;
