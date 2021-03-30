@@ -15,7 +15,7 @@ const createKlass = async (req: Request, res: Response): Promise<void> => {
 
     await insertKlass(klass);
 
-    res.status(201).send({ message: 'OK', klass });
+    res.status(201).send({ message: 'Success!', klass });
   } catch (err) {
     res.status(400).send({ message: err.message });
     throw new Error(err.message);
