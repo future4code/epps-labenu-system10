@@ -5,16 +5,19 @@ import Teacher from '../../types/teacher';
 const createTeacher = async (req: Request, res: Response): Promise<void> => {
   try {
     const teacherId = req.body.id;
+    const classId = req.body.class_id;
     const teacher: Teacher = {
       id: teacherId,
       name: req.body.name,
       email: req.body.email,
       birth_date: req.body.birth_date,
+      class_id: classId,
+      expertise: req.body.expertise,
     };
 
     await insertTeacher(teacher);
 
-    res.status(201).send({ teacher });
+    res.status(201).send({ message: 'Success!', teacher });
   } catch (err) {
     res.status(400).send({ message: err.message });
     throw new Error(err.message);
@@ -28,6 +31,8 @@ const insertTeacher = async (teacher: Teacher): Promise<Teacher> => {
       name: teacher.name,
       email: teacher.email,
       birth_date: teacher.birth_date,
+      class_id: teacher.class_id,
+      expertise: teacher.expertise,
     })
     .into('Teacher');
 
