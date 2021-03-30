@@ -6,6 +6,7 @@ import { AddressInfo } from 'net';
 import createKlass from './endpoints/classes/createKlass';
 import createStudent from './endpoints/students/createStudent';
 import getStudentAgeById from './endpoints/students/getStudentAgeById';
+import createTeacher from './endpoints/teachers/createTeacher';
 
 const app: Express = express();
 
@@ -14,6 +15,9 @@ app.use(cors());
 
 // Class endpoint routes
 app.post('/classes', createKlass);
+
+// Teacher endpoint routes
+app.post('/teachers', createTeacher);
 
 // Student endpoint routes
 app.get('/students/:id', getStudentAgeById);
