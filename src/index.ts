@@ -13,6 +13,7 @@ import { getAllTeachers } from './endpoints/teachers/getAllTeachers';
 import { getAllKlasses } from './endpoints/classes/getAllKlasses';
 import getStudentsByKlass from './endpoints/students/getStudentsByKlass';
 import getTeachersByKlass from './endpoints/teachers/getTeachersByKlass';
+import getStudentsByHobby from './endpoints/students/getStudentsByHobby';
 
 const app: Express = express();
 
@@ -31,6 +32,7 @@ app.post('/teachers', createTeacher);
 // Student endpoint routes
 app.get('/students', getAllStudents);
 app.get('/students/class/:id', getStudentsByKlass);
+app.get('/students/hobby', getStudentsByHobby);
 app.get('/students/:id', getStudentAgeById);
 app.post('/students', createStudent);
 app.put('/student/:id', changeStudentKlass);
