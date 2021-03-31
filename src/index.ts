@@ -8,6 +8,7 @@ import createStudent from './endpoints/students/createStudent';
 import getStudentAgeById from './endpoints/students/getStudentAgeById';
 import createTeacher from './endpoints/teachers/createTeacher';
 import changeStudentClass from './endpoints/students/changeStudentClass';
+import changeTeacherClass from './endpoints/teachers/changeTeacherClass';
 
 const app: Express = express();
 
@@ -19,6 +20,7 @@ app.post('/classes', createKlass);
 
 // Teacher endpoint routes
 app.post('/teachers', createTeacher);
+app.put('/teacher/:id', changeTeacherClass);
 
 // Student endpoint routes
 app.get('/students/:id', getStudentAgeById);
