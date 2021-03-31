@@ -12,6 +12,7 @@ import { getAllStudents } from './endpoints/students/getAllStudents';
 import { getAllTeachers } from './endpoints/teachers/getAllTeachers';
 import { getAllKlasses } from './endpoints/classes/getAllKlasses';
 import getStudentsByKlass from './endpoints/students/getStudentsByKlass';
+import getTeachersByKlass from './endpoints/teachers/getTeachersByKlass';
 
 const app: Express = express();
 
@@ -24,6 +25,7 @@ app.post('/classes', createKlass);
 
 // Teacher endpoint routes
 app.get('/teachers', getAllTeachers);
+app.get('/teachers/class/:id', getTeachersByKlass);
 app.post('/teachers', createTeacher);
 
 // Student endpoint routes

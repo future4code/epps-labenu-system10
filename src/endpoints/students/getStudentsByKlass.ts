@@ -5,11 +5,16 @@ import Student from '../../types/student';
 const getStudentsByKlass = async (
   req: Request,
   res: Response
-): Promise<any> => {
+): Promise<Response | undefined> => {
   try {
     const klassId = Number(req.params.id);
     const students = await queryStudentsByKlass(klassId);
-    const response = res.status(200).send(students);
+
+    if (students.length < 1) {
+      res.status(404).send({ message: 'No students found.' });
+      throw new Error('No students found.');
+    }
+    const response = res.status(200).send({ message: 'Success!', students });
 
     return response;
   } catch (error) {
@@ -22,7 +27,6 @@ const queryStudentsByKlass = async (klassId: number): Promise<Student[]> => {
     .select('*')
     .from('Student')
     .where('class_id', '=', klassId);
-  console.log(result);
   return result;
 };
 
