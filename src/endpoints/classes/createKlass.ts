@@ -1,16 +1,31 @@
 import { Request, Response } from 'express';
 import connection from '../../connection';
-import Klass from '../../types/klass';
+import Klass, { KlassModules, KlassType } from '../../types/klass';
 
 const createKlass = async (req: Request, res: Response): Promise<void> => {
   try {
+    const klassModule: KlassModules | undefined = req.body.module;
     const klassId = req.body.id;
+    const klassType: KlassType = req.body.type;
+
+    if (Number(klassModule) < 1 || Number(klassModule) > 7) {
+      throw new Error(
+        `Class module needs to be between 1 and 7. Current value: ${
+          klassModule as undefined
+        }`
+      );
+    }
+
     const klass: Klass = {
       id: klassId,
-      name: req.body.name,
+      name:
+        klassType === 'noturna'
+          ? req.body.name + '-na-night'
+          : (req.body.name as string),
       start_date: req.body.start_date,
       end_date: req.body.end_date,
-      module: req.body.module,
+      module: klassModule as KlassModules,
+      type: klassType as KlassType,
     };
 
     await insertKlass(klass);
@@ -30,6 +45,7 @@ const insertKlass = async (data: Klass): Promise<Klass> => {
       start_date: data.start_date,
       end_date: data.end_date,
       module: data.module,
+      type: data.type,
     })
     .into('Class');
 
