@@ -8,7 +8,7 @@ const createKlass = async (req: Request, res: Response): Promise<void> => {
     const klassId = req.body.id;
     const klassType: KlassType = req.body.type;
 
-    if (Number(klassModule) < 1 || Number(klassModule) > 7) {
+    if (Number(klassModule) < 0 || Number(klassModule) > 7) {
       throw new Error(
         `Class module needs to be between 1 and 7. Current value: ${
           klassModule as undefined

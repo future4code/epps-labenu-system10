@@ -13,6 +13,7 @@ export enum KlassType {
 }
 
 export enum KlassModules {
+  undefined,
   module1,
   module2,
   module3,

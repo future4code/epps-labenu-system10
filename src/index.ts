@@ -7,10 +7,11 @@ import createKlass from './endpoints/classes/createKlass';
 import createStudent from './endpoints/students/createStudent';
 import getStudentAgeById from './endpoints/students/getStudentAgeById';
 import createTeacher from './endpoints/teachers/createTeacher';
-import changeStudentClass from './endpoints/students/changeStudentClass';
+import changeStudentKlass from './endpoints/students/changeStudentKlass';
 import { getAllStudents } from './endpoints/students/getAllStudents';
 import { getAllTeachers } from './endpoints/teachers/getAllTeachers';
 import { getAllKlasses } from './endpoints/classes/getAllKlasses';
+import getStudentsByKlass from './endpoints/students/getStudentsByKlass';
 
 const app: Express = express();
 
@@ -27,9 +28,10 @@ app.post('/teachers', createTeacher);
 
 // Student endpoint routes
 app.get('/students', getAllStudents);
+app.get('/students/class/:id', getStudentsByKlass);
 app.get('/students/:id', getStudentAgeById);
 app.post('/students', createStudent);
-app.put('/student/:id', changeStudentClass);
+app.put('/student/:id', changeStudentKlass);
 
 const server = app.listen(process.env.PORT || 3003, () => {
   if (server) {
