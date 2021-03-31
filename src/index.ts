@@ -9,7 +9,8 @@ import getStudentAgeById from './endpoints/students/getStudentAgeById';
 import createTeacher from './endpoints/teachers/createTeacher';
 import changeStudentClass from './endpoints/students/changeStudentClass';
 import { getAllStudents } from './endpoints/students/getAllStudents';
-import { getAllTeachers } from './endpoints/students/getAllTeachers';
+import { getAllTeachers } from './endpoints/teachers/getAllTeachers';
+import { getAllKlasses } from './endpoints/classes/getAllKlasses';
 
 const app: Express = express();
 
@@ -17,6 +18,7 @@ app.use(express.json());
 app.use(cors());
 
 // Class endpoint routes
+app.get('/classes', getAllKlasses);
 app.post('/classes', createKlass);
 
 // Teacher endpoint routes
