@@ -63,6 +63,17 @@ localhost port is `3003`
 
 endpoint route is `/students`
 
+This is the expected object to create a new student:
+```
+{
+    "name": "Astro Dev",
+    "email": "astro@dev.com",
+    "birth_date": "1995-03-14",
+    "hobby": "Astronautizar",
+    "class_id": 2
+}
+```
+
 This is a Success case of a `response` from the `POST` _Method_:
 ```
 {
