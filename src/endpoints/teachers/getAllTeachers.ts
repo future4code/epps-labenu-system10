@@ -2,10 +2,7 @@ import { Request, Response } from 'express';
 import connection from '../../connection';
 import Teacher from '../../types/teacher';
 
-export const getAllTeachers = async (
-  req: Request,
-  res: Response
-): Promise<void> => {
+const getAllTeachers = async (req: Request, res: Response): Promise<void> => {
   try {
     const teachers = await queryAllTeachers();
     res.status(200).send(teachers);
@@ -20,3 +17,5 @@ const queryAllTeachers = async (): Promise<Teacher[]> => {
     `);
   return result[0];
 };
+
+export default getAllTeachers;

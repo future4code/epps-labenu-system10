@@ -2,10 +2,7 @@ import { Request, Response } from 'express';
 import connection from '../../connection';
 import Klass from '../../types/klass';
 
-export const getAllKlasses = async (
-  req: Request,
-  res: Response
-): Promise<void> => {
+const getAllKlasses = async (req: Request, res: Response): Promise<void> => {
   try {
     const klasses = await queryAllClasses();
     res.status(200).send(klasses);
@@ -20,3 +17,5 @@ const queryAllClasses = async (): Promise<Klass[]> => {
     `);
   return result[0];
 };
+
+export default getAllKlasses;
