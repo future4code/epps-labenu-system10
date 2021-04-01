@@ -14,6 +14,7 @@ import getStudentsByKlass from './endpoints/students/getStudentsByKlass';
 import getTeachersByKlass from './endpoints/teachers/getTeachersByKlass';
 import getStudentsByHobby from './endpoints/students/getStudentsByHobby';
 
+
 const app: Express = express();
 
 app.use(express.json());
@@ -27,6 +28,7 @@ app.post('/classes', createKlass);
 app.get('/teachers', getAllTeachers);
 app.get('/teachers/class/:id', getTeachersByKlass);
 app.post('/teachers', createTeacher);
+app.put('/teacher/:id', changeTeacherClass);
 
 // Student endpoint routes
 app.get('/students', getAllStudents);
