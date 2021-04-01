@@ -6,7 +6,7 @@ const deleteStudentFromKlassById = async (
   res: Response
 ): Promise<void> => {
   try {
-    const id = req.params.id as string;
+    const id = Number(req.params.id);
     const student = await queryStudentKlassById(id);
     if (!student) {
       res.status(404).send({ message: `No student with id: ${id}` });
@@ -22,7 +22,7 @@ const deleteStudentFromKlassById = async (
   }
 };
 
-const queryStudentKlassById = async (id: string) => {
+const queryStudentKlassById = async (id: number) => {
   const result = await connection
     .delete('class_id')
     .from('Student')

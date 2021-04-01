@@ -14,8 +14,8 @@ import getStudentsByKlass from './endpoints/students/getStudentsByKlass';
 import getTeachersByKlass from './endpoints/teachers/getTeachersByKlass';
 import getStudentsByHobby from './endpoints/students/getStudentsByHobby';
 import changeTeacherKlass from './endpoints/teachers/changeTeacherKlass';
-import deleteStudentById from './endpoints/students/deleteStudentById';
 import deleteStudentFromKlassById from './endpoints/students/deleteStudentFromKlassById';
+import deleteTeacherFromKlassById from './endpoints/teachers/deleteTeacherFromKlassById';
 
 const app: Express = express();
 
@@ -25,6 +25,8 @@ app.use(cors());
 // Class endpoint routes
 app.get('/classes', getAllKlasses);
 app.post('/classes', createKlass);
+app.delete('/classes/student/:id', deleteStudentFromKlassById);
+app.delete('/classes/teacher/:id', deleteTeacherFromKlassById);
 
 // Teacher endpoint routes
 app.get('/teachers', getAllTeachers);
@@ -39,8 +41,6 @@ app.get('/students/hobby', getStudentsByHobby);
 app.get('/students/:id', getStudentAgeById);
 app.post('/students', createStudent);
 app.put('/student/:id', changeStudentKlass);
-app.delete('/students/:id', deleteStudentById);
-app.delete('/students/class/:id', deleteStudentFromKlassById);
 
 const server = app.listen(process.env.PORT || 3003, () => {
   if (server) {
