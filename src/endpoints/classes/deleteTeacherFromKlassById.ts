@@ -1,7 +1,7 @@
 import { Request, Response } from 'express';
 import { resolveSoa } from 'node:dns';
 import connection from '../../connection';
-import deleteStudentFromKlassById from '../students/deleteStudentFromKlassById';
+import deleteStudentFromKlassById from './deleteStudentFromKlassById';
 
 const deleteTeacherFromKlassById = async (
   req: Request,

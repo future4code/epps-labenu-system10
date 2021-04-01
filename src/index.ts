@@ -14,8 +14,9 @@ import getStudentsByKlass from './endpoints/students/getStudentsByKlass';
 import getTeachersByKlass from './endpoints/teachers/getTeachersByKlass';
 import getStudentsByHobby from './endpoints/students/getStudentsByHobby';
 import changeTeacherKlass from './endpoints/teachers/changeTeacherKlass';
-import deleteStudentFromKlassById from './endpoints/students/deleteStudentFromKlassById';
-import deleteTeacherFromKlassById from './endpoints/teachers/deleteTeacherFromKlassById';
+import deleteStudentFromKlassById from './endpoints/classes/deleteStudentFromKlassById';
+import deleteTeacherFromKlassById from './endpoints/classes/deleteTeacherFromKlassById';
+import changeModuleById from './endpoints/classes/changeModuleById';
 
 const app: Express = express();
 
@@ -25,6 +26,7 @@ app.use(cors());
 // Class endpoint routes
 app.get('/classes', getAllKlasses);
 app.post('/classes', createKlass);
+app.put('/classes/:id', changeModuleById);
 app.delete('/classes/student/:id', deleteStudentFromKlassById);
 app.delete('/classes/teacher/:id', deleteTeacherFromKlassById);
 
