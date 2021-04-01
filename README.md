@@ -59,8 +59,6 @@ This is a Success case of a `response` from the `GET` _Method_:
 ```
 
 ### `POST` Method
-localhost port is `3003`
-
 endpoint route is `/students`
 
 This is the expected object to create a new student:
@@ -85,6 +83,24 @@ This is a Success case of a `response` from the `POST` _Method_:
         "class_id": 2,
         "hobby": "Astronautizar"
     }
+}
+```
+
+### `PUT` Method
+endpoint route is `/student/:id`
+
+This is the expected object to change a student's class:
+```
+{
+    "class_id": 3
+}
+```
+
+This is a Success case of a `response` from the `PUT` _Method_:
+```
+{
+    "message": "Success!",
+    "classId": 3
 }
 ```
 
