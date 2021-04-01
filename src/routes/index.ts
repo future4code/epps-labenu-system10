@@ -1,3 +1,6 @@
+// Express Router import
+import { Router } from 'express';
+
 // Students imports
 import createStudent from '../endpoints/students/createStudent';
 import getStudentAgeById from '../endpoints/students/getStudentAgeById';
@@ -19,7 +22,6 @@ import createKlass from '../endpoints/classes/createKlass';
 import getAllKlasses from '../endpoints/classes/getAllKlasses';
 import changeModuleById from '../endpoints/classes/changeModuleById';
 import deleteTeacherFromKlassById from '../endpoints/classes/deleteTeacherFromKlassById';
-import { Router } from 'express';
 
 const routes = Router();
 
