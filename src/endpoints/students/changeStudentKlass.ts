@@ -1,7 +1,7 @@
 import { Request, Response } from 'express';
 import connection from '../../connection';
 
-const changeStudentClass = async (
+const changeStudentKlass = async (
   req: Request,
   res: Response
 ): Promise<Response> => {
@@ -9,7 +9,7 @@ const changeStudentClass = async (
     const studentId = Number(req.params.id);
     const classId = Number(req.body.class_id);
 
-    await updateStudentClass(studentId, classId);
+    await updateStudentKlass(studentId, classId);
 
     const response = res
       .status(200)
@@ -22,7 +22,7 @@ const changeStudentClass = async (
   }
 };
 
-const updateStudentClass = async (
+const updateStudentKlass = async (
   studentId: number,
   classId: number
 ): Promise<number> => {
@@ -36,4 +36,4 @@ const updateStudentClass = async (
   return result;
 };
 
-export default changeStudentClass;
+export default changeStudentKlass;
