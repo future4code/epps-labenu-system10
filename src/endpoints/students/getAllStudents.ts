@@ -2,10 +2,15 @@ import { Request, Response } from 'express';
 import connection from '../../connection';
 import Student from '../../types/student';
 
-const getAllStudents = async (req: Request, res: Response): Promise<void> => {
+const getAllStudents = async (
+  req: Request,
+  res: Response
+): Promise<Response | undefined> => {
   try {
     const students = await queryAllStudents();
-    res.status(200).send(students);
+    const response = res.status(200).send(students);
+
+    return response;
   } catch (error) {
     res.status(400).send({ message: error.message });
   }

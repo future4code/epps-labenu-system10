@@ -4,20 +4,23 @@ import connection from '../../connection';
 import Student from '../../types/student';
 
 // HTTP METHOD (PROMISE)
-const getStudentAgeById = async (req: Request, res: Response): Promise<any> => {
+const getStudentAgeById = async (
+  req: Request,
+  res: Response
+): Promise<Response> => {
   try {
     const studentId = req.params.id as string;
     const student = await queryStudentAgeById(Number(studentId));
 
-    console.log(student.name);
     const studentDate = student.birth_date;
 
     const today = new Date();
-    console.log(today);
 
     const studentAge = today.getFullYear() - studentDate.getFullYear();
 
-    res.status(200).send({ student, age: studentAge });
+    const response = res.status(200).send({ student, age: studentAge });
+
+    return response;
   } catch (err) {
     res.status(400).send({ message: err.message });
     throw new Error(err.message);

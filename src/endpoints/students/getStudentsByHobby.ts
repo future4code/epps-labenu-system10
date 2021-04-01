@@ -5,7 +5,7 @@ import Student from '../../types/student';
 const getStudentsByHobby = async (
   req: Request,
   res: Response
-): Promise<void> => {
+): Promise<Response | undefined> => {
   try {
     const hobby = req.query.hobby as string;
     const students = await queryStudentsByHobby(hobby);
@@ -15,7 +15,9 @@ const getStudentsByHobby = async (
         .send({ message: `No students found with hobby: ${hobby}` });
       throw new Error(`No students found with hobby: ${hobby}`);
     }
-    res.status(200).send({ message: 'Success!', students });
+    const response = res.status(200).send({ message: 'Success!', students });
+
+    return response;
   } catch (error) {
     res.status(400).send({ message: error.message });
   }

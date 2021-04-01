@@ -4,19 +4,23 @@ import connection from '../../connection';
 const deleteStudentFromKlassById = async (
   req: Request,
   res: Response
-): Promise<void> => {
+): Promise<Response | undefined> => {
   try {
     const id = Number(req.params.id);
     const student = await queryStudentKlassById(id);
+    let response = res;
+
     if (!student) {
-      res.status(404).send({ message: `No student with id: ${id}` });
-      throw new Error(`No student with id: ${id}`);
+      response = res.status(404).send({ message: `No student with id: ${id}` });
+    } else {
+      response = res
+        .status(200)
+        .send(
+          `Success! The student with id ${id} has been removed from the class.`
+        );
     }
-    res
-      .status(200)
-      .send(
-        `Success! The student with id ${id} has been removed from the class.`
-      );
+
+    return response;
   } catch (error) {
     res.status(400).send({ message: error.message });
   }
