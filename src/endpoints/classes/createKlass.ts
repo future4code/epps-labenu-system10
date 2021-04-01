@@ -2,7 +2,7 @@ import { Request, Response } from 'express';
 import connection from '../../connection';
 import Klass, { KlassModules, KlassType } from '../../types/klass';
 
-const createKlass = async (req: Request, res: Response): Promise<void> => {
+const createKlass = async (req: Request, res: Response): Promise<Response> => {
   try {
     const klassModule: KlassModules | undefined = req.body.module;
     const klassId = req.body.id;
@@ -30,7 +30,9 @@ const createKlass = async (req: Request, res: Response): Promise<void> => {
 
     await insertKlass(klass);
 
-    res.status(201).send({ message: 'Success!', klass });
+    const response = res.status(201).send({ message: 'Success!', klass });
+
+    return response;
   } catch (err) {
     res.status(400).send({ message: err.message });
     throw new Error(err.message);

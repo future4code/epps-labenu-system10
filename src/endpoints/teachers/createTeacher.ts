@@ -2,7 +2,10 @@ import { Request, Response } from 'express';
 import connection from '../../connection';
 import Teacher from '../../types/teacher';
 
-const createTeacher = async (req: Request, res: Response): Promise<void> => {
+const createTeacher = async (
+  req: Request,
+  res: Response
+): Promise<Response> => {
   try {
     const teacherId = req.body.id;
     const classId = req.body.class_id;
@@ -17,7 +20,9 @@ const createTeacher = async (req: Request, res: Response): Promise<void> => {
 
     await insertTeacher(teacher);
 
-    res.status(201).send({ message: 'Success!', teacher });
+    const response = res.status(201).send({ message: 'Success!', teacher });
+
+    return response;
   } catch (err) {
     res.status(400).send({ message: err.message });
     throw new Error(err.message);

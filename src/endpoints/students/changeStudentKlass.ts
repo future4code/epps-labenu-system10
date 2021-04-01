@@ -4,7 +4,7 @@ import connection from '../../connection';
 const changeStudentKlass = async (
   req: Request,
   res: Response
-): Promise<Response> => {
+): Promise<Response | undefined> => {
   try {
     const studentId = Number(req.params.id);
     const classId = Number(req.body.class_id);
@@ -18,7 +18,6 @@ const changeStudentKlass = async (
     return response;
   } catch (err) {
     res.status(400).send({ message: err.message });
-    throw new Error(err.message);
   }
 };
 

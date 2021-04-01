@@ -7,15 +7,18 @@ import Student from '../../types/student';
 const deleteStudentById = async (
   req: Request,
   res: Response
-): Promise<void> => {
+): Promise<Response | undefined> => {
   try {
     const studentId = req.params.id as string;
     const student = await queryStudentById(Number(studentId));
 
-    res.status(200).send({ student, message: 'Foi deletado com sucesso!' });
+    const response = res
+      .status(200)
+      .send({ student, message: 'Foi deletado com sucesso!' });
+
+    return response;
   } catch (err) {
     res.status(400).send({ message: 'Aff' });
-    throw new Error(err.message);
   }
 };
 
