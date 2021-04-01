@@ -1,7 +1,7 @@
 import { Request, Response } from 'express';
 import connection from '../../connection';
 
-const changeTeacherClass = async (
+const changeTeacherKlass = async (
   req: Request,
   res: Response
 ): Promise<Response> => {
@@ -9,7 +9,7 @@ const changeTeacherClass = async (
     const teacherId = Number(req.params.id);
     const klassId = Number(req.body.class_id);
 
-    await updateTeacherClass(teacherId, klassId);
+    await updateTeacherKlass(teacherId, klassId);
     const response = res.status(200).send({
       message: 'Modificado com sucesso!',
       teacher_id: teacherId,
@@ -22,7 +22,7 @@ const changeTeacherClass = async (
   }
 };
 
-const updateTeacherClass = async (
+const updateTeacherKlass = async (
   teacherId: number,
   klassId: number
 ): Promise<number> => {
@@ -33,4 +33,4 @@ const updateTeacherClass = async (
   return result;
 };
 
-export default changeTeacherClass;
+export default changeTeacherKlass;
