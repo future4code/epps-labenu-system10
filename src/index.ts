@@ -14,6 +14,8 @@ import getStudentsByKlass from './endpoints/students/getStudentsByKlass';
 import getTeachersByKlass from './endpoints/teachers/getTeachersByKlass';
 import getStudentsByHobby from './endpoints/students/getStudentsByHobby';
 import changeTeacherKlass from './endpoints/teachers/changeTeacherKlass';
+import deleteStudentById from './endpoints/students/deleteStudentById';
+import deleteStudentFromKlassById from './endpoints/students/deleteStudentFromKlassById';
 
 const app: Express = express();
 
@@ -37,6 +39,8 @@ app.get('/students/hobby', getStudentsByHobby);
 app.get('/students/:id', getStudentAgeById);
 app.post('/students', createStudent);
 app.put('/student/:id', changeStudentKlass);
+app.delete('/students/:id', deleteStudentById);
+app.delete('/students/class/:id', deleteStudentFromKlassById);
 
 const server = app.listen(process.env.PORT || 3003, () => {
   if (server) {
