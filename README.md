@@ -94,11 +94,13 @@ As funcionalidades são:
 
 → `GET` Pegar a idade de algum estudante a partir do id;
 
-→ `GET`Exibir todos os estudantes;
+→ `GET` Exibir todos os estudantes;
 
 → `GET` Exibir todos os docentes;
 
 → `GET` Exibir todas as turmas;
+
+→ `GET` Exibir estudantes de uma turma;
 
 → `GET` Exibir docentes de uma turma;
 
