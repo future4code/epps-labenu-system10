@@ -13,7 +13,7 @@ localhost port is `3003`
 endpoint route is `/students`
 
 This is a Success case of a `response` from the `GET` _Method_:
-```
+```ts
 [
     {
         "id": 1,
@@ -44,7 +44,7 @@ endpoint route is `/student/:id`
 The `Id` parameter is passed as a `pathParam` on the route.
 
 This is a Success case of a `response` from the `GET` _Method_:
-```
+```ts
 {
     "student": {
         "id": 5,
@@ -62,7 +62,7 @@ This is a Success case of a `response` from the `GET` _Method_:
 endpoint route is `/students`
 
 This is the expected object to create a new student:
-```
+```ts
 {
     "name": "Astro Dev",
     "email": "astro@dev.com",
@@ -73,7 +73,7 @@ This is the expected object to create a new student:
 ```
 
 This is a Success case of a `response` from the `POST` _Method_:
-```
+```ts
 {
     "message": "Success!",
     "student": {
@@ -90,14 +90,14 @@ This is a Success case of a `response` from the `POST` _Method_:
 endpoint route is `/student/:id`
 
 This is the expected object to change a student's class:
-```
+```ts
 {
     "class_id": 3
 }
 ```
 
 This is a Success case of a `response` from the `PUT` _Method_:
-```
+```ts
 {
     "message": "Success!",
     "classId": 3
